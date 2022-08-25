@@ -1,0 +1,189 @@
+
+
+#gameContainer canvas {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+}
+
+#tetris {
+  border: dashed thin gray;
+  margin: 10px auto;
+}
+
+.col {
+  min-height: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  -ms-flex-preferred-size: 0;
+    flex-basis: 0;
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    min-width: 0;
+    max-width: 100%;
+}
+
+#playbutton {
+  margin: 10px;
+}
+
+#tetrisTag, #navTag, #layoutTag, #autoLoadTag, #FrontPage-Minimal, #FrontPage-Compact, #score {
+  display: none;
+}
+
+/* Main Background and Font here */
+
+body {
+  background: black;
+  height: 100%;
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+    font-family: "Segoe UI", "Source Sans Pro", Calibri, Candara, Arial, sans-serif;
+    font-size: 0.9375rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #fff;
+    text-align: left;
+	overflow: hidden;
+}
+.cover {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    background-size: cover;
+    opacity: .5;
+    filter: blur(16px);
+}
+
+html {
+    font-family: sans-serif;
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+-webkit-tap-highlight-color: rgba(0,0,0,0);}
+*, *::before, *::after {
+    -webkit-box-sizing: border-box;
+box-sizing: border-box;}
+
+.container-fluid, .container-sm, .container-md, .container-lg, .container-xl {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+margin-left: auto;}
+
+.text-center {
+    text-align: center !important;
+}
+.justify-content-center {
+    -webkit-box-pack: center !important;
+    -ms-flex-pack: center !important;
+    justify-content: center !important;
+}
+.row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+img {
+    vertical-align: middle;
+    border-style: none;
+}
+
+h2, .h2 {
+    font-size: 1.875rem;
+}
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    margin-bottom: 0.5rem;
+    font-weight: 300;
+    line-height: 1.2;
+}
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+.progress {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 0.5rem;
+    overflow: hidden;
+    line-height: 0;
+    font-size: 0.703125rem;
+background-color: #e9ecef;}
+
+.progress .progress-bar {
+    font-size: 8px;
+    line-height: 8px;
+}
+.bg-success {
+    background-color: #3FB618 !important;
+}
+.progress-bar-animated {
+    -webkit-animation: progress-bar-stripes 1s linear infinite;
+    animation: progress-bar-stripes 1s linear infinite;
+}
+.progress-bar-striped {
+background: rgb(180,58,58);
+    background: -moz-linear-gradient(90deg, rgba(180,58,58,1) 0%, rgba(253,29,29,1) 31%, rgba(255,174,60,1) 100%);
+    background: -webkit-linear-gradient(
+90deg
+, rgba(180,58,58,1) 0%, rgba(253,29,29,1) 31%, rgba(255,174,60,1) 100%);
+    background: linear-gradient(
+90deg
+, rgba(180,58,58,1) 0%, rgba(253,29,29,1) 31%, rgba(255,174,60,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#b43a3a",endColorstr="#ffae3c",GradientType=1);
+    float: left;
+    width: 40%;
+    height: 100%;
+    display: inline-block;
+}
+.progress-bar {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    overflow: hidden;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    background-color: #2780E3;
+    -webkit-transition: width 0.6s ease;
+    transition: width 0.6s ease;
+}
+.g-play-but{position: absolute;bottom: 5px;left: 5px;padding: 5px 10px;border-radius: 10px;background:#000}
+.g-play-but img{width:22px;float:left;margin-right: 10px;}
+.g-play-but a{line-height: 24px;display: inline-block;color: #fff;}
+.g-play-but a:hover{text-decoration:none}
+
+.fullscreen{
+	background-image: url('../img/fullscreen.png');
+	height:32px;
+	width:35px;
+	position:absolute;
+	font-size: 20px;
+	bottom:0;
+	right:0;
+	background-color:transparent;
+	background-size:35px 35px;
+	border:none;
+	cursor: pointer;
+}
+#footer{display:none}

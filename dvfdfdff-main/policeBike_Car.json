@@ -1,0 +1,13 @@
+{
+"companyName": "BestFreeGames",
+"productName": "Real Crime Gangster: Grand City",
+"dataUrl": "policeBike_Car.data.unityweb",
+"wasmCodeUrl": "policeBike_Car.wasm.code.unityweb",
+"wasmFrameworkUrl": "policeBike_Car.wasm.framework.unityweb",
+"TOTAL_MEMORY": 268435456,
+"graphicsAPI": ["WebGL 2.0", "WebGL 1.0"],
+"webglContextAttributes": {"preserveDrawingBuffer": false},
+"splashScreenStyle": "Dark",
+"backgroundColor": "#26464B",
+"cacheControl": {"default": "must-revalidate"}
+}

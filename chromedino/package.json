@@ -1,0 +1,18 @@
+{
+  "private": true,
+  "scripts": {
+    "lint": "eslint lib",
+    "start": "serve"
+  },
+  "dependencies": {
+    "serve": "^12.0.0"
+  },
+  "devDependencies": {
+    "@chrisdothtml/eslint-config": "^0.2.0",
+    "eslint": "^6.0.0"
+  },
+  "volta": {
+    "node": "14.16.1",
+    "yarn": "1.22.5"
+  }
+}
