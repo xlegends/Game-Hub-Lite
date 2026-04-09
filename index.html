@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Game Hub Lite</title>
+  <title>School</title>
   <style>
     :root {
       --bg: #0b1020;
       --bg-soft: #111936;
-      --surface: rgba(255, 255, 255, 0.08);
-      --surface-2: rgba(255, 255, 255, 0.13);
+      --surface: rgba(255, 255, 255, 0.06);
+      --surface-2: rgba(255, 255, 255, 0.11);
       --text: #e8ecff;
       --muted: #9eabd6;
       --accent: #6ea8ff;
@@ -58,9 +58,10 @@
       border: 1px solid transparent;
       background: var(--surface);
       color: var(--text);
-      border-radius: 10px;
+      border-radius: 12px;
       padding: 12px 14px;
       font-size: 0.95rem;
+      backdrop-filter: blur(6px);
       outline: none;
     }
 
@@ -90,17 +91,19 @@
       border: 1px solid transparent;
       border-radius: var(--radius);
       padding: 14px;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
       display: flex;
       flex-direction: column;
       gap: 10px;
       min-height: 110px;
-      transition: transform .14s ease, border-color .14s ease, background .14s ease;
+      transition: transform .14s ease, border-color .14s ease, background .14s ease, box-shadow .14s ease;
     }
 
     .card:hover {
       transform: translateY(-2px);
       border-color: var(--accent);
       background: var(--surface-2);
+      box-shadow: 0 16px 26px rgba(0, 0, 0, 0.24);
     }
 
     .title {
@@ -136,9 +139,8 @@
 </head>
 <body>
   <main class="shell">
-    <h1>Game Hub Lite</h1>
-    <p class="subtitle">All links are local paths in this repo. Filter the list, then launch straight into any game.</p>
-
+    <h1>School</h1>
+    
     <div class="toolbar">
       <input id="search" class="search" type="search" placeholder="Search games…" aria-label="Search games">
       <div class="pill"><span id="visibleCount">0</span><span>games shown</span></div>
