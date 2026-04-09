@@ -3,156 +3,202 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home - Canva</title>
-
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z6KLZMYEK8"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-Z6KLZMYEK8');
-  </script>
-
-  <script async src="https://arc.io/widget.min.js#2j789r5Y"></script>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7728087950880968" crossorigin="anonymous"></script>
-
+  <title>Game Hub Lite</title>
   <style>
     :root {
-      /* Apple-style color palette */
-      --bg-color: #f5f5f7;
-      --card-bg: #ffffff;
-      --text-main: #1d1d1f;
-      --accent: #0066cc;
+      --bg: #0b1020;
+      --bg-soft: #111936;
+      --surface: rgba(255, 255, 255, 0.08);
+      --surface-2: rgba(255, 255, 255, 0.13);
+      --text: #e8ecff;
+      --muted: #9eabd6;
+      --accent: #6ea8ff;
+      --ok: #4ade80;
+      --warn: #f59e0b;
+      --radius: 14px;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; }
 
     body {
-      background-color: var(--bg-color);
-      color: var(--text-main);
-      /* Uses native system fonts (San Francisco on Mac/iOS, Segoe UI on Windows) */
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-      -webkit-font-smoothing: antialiased;
-      text-align: center;
-      padding: 60px 20px;
+      margin: 0;
+      min-height: 100vh;
+      background: radial-gradient(1200px 700px at 10% -20%, #1f3270, var(--bg));
+      color: var(--text);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      padding: 32px 20px 56px;
     }
 
-    header {
-      margin-bottom: 50px;
-    }
-
-    h1 {
-      font-size: 3rem;
-      font-weight: 600;
-      letter-spacing: -0.03em; /* Tightens text slightly for that Apple look */
-      color: var(--text-main);
-    }
-
-    /* Container for the grid */
-    .game-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 20px;
-      max-width: 1100px;
+    .shell {
+      max-width: 1200px;
       margin: 0 auto;
     }
 
-    /* Styling the links as sleek cards */
-    .game-container a {
-      background-color: var(--card-bg);
-      color: var(--text-main);
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 0.95rem;
-      padding: 20px 15px;
-      border-radius: 16px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.04);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 80px;
-      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(1.8rem, 2.6vw, 2.6rem);
+      letter-spacing: .02em;
     }
 
-    /* Subtle hover scale and shadow increase */
-    .game-container a:hover {
-      transform: translateY(-3px) scale(1.02);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
-      color: var(--accent);
+    .subtitle {
+      margin: 0 0 24px;
+      color: var(--muted);
+      line-height: 1.45;
     }
+
+    .toolbar {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .search {
+      width: 100%;
+      border: 1px solid transparent;
+      background: var(--surface);
+      color: var(--text);
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-size: 0.95rem;
+      outline: none;
+    }
+
+    .search:focus { border-color: var(--accent); }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--surface);
+      color: var(--muted);
+      border-radius: 999px;
+      padding: 0 12px;
+      font-size: 0.82rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 14px;
+    }
+
+    .card {
+      text-decoration: none;
+      color: var(--text);
+      background: var(--surface);
+      border: 1px solid transparent;
+      border-radius: var(--radius);
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      min-height: 110px;
+      transition: transform .14s ease, border-color .14s ease, background .14s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+      background: var(--surface-2);
+    }
+
+    .title {
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .meta {
+      margin-top: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 0.78rem;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: .72rem;
+      border-radius: 999px;
+      padding: 3px 8px;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .status.ok { color: var(--ok); }
+    .status.warn { color: var(--warn); }
+
+    .hidden { display: none; }
   </style>
 </head>
-
 <body>
-  <header>
-    <h1>school</h1>
-  </header>
+  <main class="shell">
+    <h1>Game Hub Lite</h1>
+    <p class="subtitle">All links are local paths in this repo. Filter the list, then launch straight into any game.</p>
 
-  <div class="game-container">
-    <a href="/2048/index.html">2048</a>
-    <a href="/Buildbuild/index.html">DEFCON</a>
-    <a href="/CTR-Holiday-main/index.html">Cut The Rope - Holiday</a>
-    <a href="/FBWG1-main/index.html">Fireboy & Watergirl 1</a>
-    <a href="/FBWG2-main/index.html">Fireboy & Watergirl 2</a>
-    <a href="/Five-Nights-at-Freddys-Web-main/public/index.html">FNAF Custom</a>
-    <a href="/Snowbattle.io-main/index.html">SnowBattle.io</a>
-    <a href="/WebGL-Fluid-Simulation/index.html">Fluid Simulation</a>
-    <a href="/basketball-stars-main/index.html">Basketball Stars</a>
-    <a href="/bitlife/index.html">BitLife</a>
-    <a href="/cannonbasketball4-main/index.html">Cannon Basketball 4</a>
-    <a href="/chromedino/index.html">Offline Dino</a>
-    <a href="/cookieclicker-gh-pages/index.html">Cookie Clicker</a>
-    <a href="/dealornodeal-main/index.html">Deal Or No Deal</a>
-    <a href="/defendthetank-main/index.html">Defend The Tank</a>
-    <a href="/demon-main/index.html">Medieval Battle 2P</a>
-    <a href="/dogeminer/index.html">Doge Miner</a>
-    <a href="/economical2-main/index.html">Economical 2</a>
-    <a href="/elasticman-main/index.html">Elastic Man</a>
-    <a href="/fnaf2plswork-main/index.html">FNAF 2</a>
-    <a href="/fnaf3-main/index.html">FNAF 3</a>
-    <a href="/getawayshootout-main/index.html">Getaway Shootout</a>
-    <a href="/hexgl-main/index.html">HexGL</a>
-    <a href="/jenga/Physijs/examples/jenga.html">Jenga</a>
-    <a href="/madalin-cars-multiplayer/index.html">Madalin's Stunt Cars</a>
-    <a href="/money/money.html">Spend Jeff Bezos Money</a>
-    <a href="/pocketleague-main/index.html">Pocket League 3D</a>
-    <a href="/ragdoll2p-main/index.html">Ragdoll 2P</a>
-    <a href="/retrobowl/index.html">Retrobowl</a>
-    <a href="/rolling%20sky/tmm-webgl-rollingsky/index.html">Rolling Sky</a>
-    <a href="/rooftop/index.html">Rooftop Snipers</a>
-    <a href="/rp5-main/index.html">Rally Point 5</a>
-    <a href="/tn6pS9dCf37xAhkJv/index.html">Run 3</a>
-    <a href="/sdfdshf-main/index.html">Poppy's Playtime</a>
-    <a href="/slope/index.html">Slope</a>
-    <a href="/squidgame-main/index.html">Squid Game</a>
-    <a href="/stackbump3d/index.html">Stack Bump 3D</a>
-    <a href="/storage/subwaymaybe/subway-surfers/index.html">Subway Surfers</a>
-    <a href="/superhot/index.html">Superhot</a>
-    <a href="/tetris/index.html">Tetris</a>
-    <a href="/towerstack/tower.html">Towerstack</a>
-    <a href="/tpp2-main/index.html">Temple Run 2</a>
-    <a href="/vex3/index.html">Vex 3</a>
-    <a href="/vex4/index.html">Vex 4</a>
-    <a href="/vex5/index.html">Vex 5</a>
-    <a href="/vex6/index.html">Vex 6</a>
-    <a href="/webretro/index.html">Web Retro</a>
-    <a href="/motox3m-main/index.html">Moto X3M</a>
-    <a href="/motox3m-pool/index.html">Moto X3M Pool Party</a>
-    <a href="/motox3m-spooky/index.html">Moto X3M Spooky Land</a>
-    <a href="/motox3m-winter/index.html">Moto X3M Winter</a>
-    <a href="/ducklife1/index.html">Duck Life 1</a>
-    <a href="/ducklife2/index.html">Duck Life 2</a>
-    <a href="/ducklife3/index.html">Duck Life 3</a>
-    <a href="/ducklife4/index.html">Duck Life 4</a>
-    <a href="/tactical-weapon-pack-2/index.html">Tactical Weapons Pack 2</a>
-    <a href="/worlds-hardest-game/index.html">Worlds Hardest Game 1</a>
-    <a href="/worlds-hardest-game-2/index.html">Worlds Hardest Game 2</a>
-    <a href="/stickman-hook/index.html">Stickman-Hook</a>
-  </div>
+    <div class="toolbar">
+      <input id="search" class="search" type="search" placeholder="Search games…" aria-label="Search games">
+      <div class="pill"><span id="visibleCount">0</span><span>games shown</span></div>
+    </div>
 
+    <section class="grid" id="games">
+      <a class="card" data-name="2048" href="2048/index.html"><div class="title">2048</div><div class="meta"><span>Puzzle</span><span class="status ok">● local</span></div></a>
+      <a class="card" data-name="Defcon Buildbuild" href="Buildbuild/index.html"><div class="title">DEFCON</div><div class="meta"><span>Strategy</span><span class="status ok">● local</span></div></a>
+      <a class="card" data-name="Cut The Rope Holiday" href="CTR-Holiday-main/index.html"><div class="title">Cut The Rope - Holiday</div><div class="meta"><span>Puzzle</span><span class="status ok">● local</span></div></a>
+      <a class="card" data-name="Fireboy Watergirl 1" href="FBWG1-main/index.html"><div class="title">Fireboy &amp; Watergirl 1</div><div class="meta"><span>Co-op</span><span class="status ok">● local</span></div></a>
+      <a class="card" data-name="Fireboy Watergirl 2" href="FBWG2-main/index.html"><div class="title">Fireboy &amp; Watergirl 2</div><div class="meta"><span>Co-op</span><span class="status ok">● local</span></div></a>
+      <a class="card" data-name="FNAF 2" href="fnaf2plswork-main/index.html"><div class="title">FNAF 2</div><div class="meta"><span>Horror</span><span class="status ok">● local</span></div></a>
+      <a class="card" data-name="FNAF 3" href="fnaf3-main/index.html"><div class="title">FNAF 3</div><div class="meta"><span>Horror</span><span class="status ok">● local</span></div></a>
+      <a class="card" data-name="Fluid Simulation" href="WebGL-Fluid-Simulation/index.html"><div class="title">Fluid Simulation</div><div class="meta"><span>Sandbox</span><span class="status ok">● local</span></div></a>
+      <a class="card" data-name="Basketball Stars" href="basketball-stars-main/index.html"><div class="title">Basketball Stars</div><div class="meta"><span>Sports</span><span class="status ok">● local</span></div></a>
+      <a class="card" data-name="Bitlife" href="bitlife/index.html"><div class="title">BitLife</div><div class="meta"><span>Sim</span><span class="status ok">● local</span></div></a>
+      <a class="card" data-name="Chrome Dino" href="chromedino/index.html"><div class="title">Offline Dino</div><div class="meta"><span>Arcade</span><span class="status ok">● local</span></div></a>
+      <a class="card" data-name="Cookie Clicker" href="cookieclicker-gh-pages/index.html"><div class="title">Cookie Clicker</div><div class="meta"><span>Idle</span><span class="status ok">● local</span></div></a>
+      <a class="card" data-name="Deal or No Deal" href="dealornodeal-main/index.html"><div class="title">Deal Or No Deal</div><div class="meta"><span>Trivia</span><span class="status ok">● local</span></div></a>
+      <a class="card" data-name="Defend The Tank" href="defendthetank-main/index.html"><div class="title">Defend The Tank</div><div class="meta"><span>Defense</span><span class="status ok">● local</span></div></a>
+      <a class="card" data-name="Getaway Shootout" href="getawayshootout-main/index.html"><div class="title">Getaway Shootout</div><div class="meta"><span>Action</span><span class="status ok">● local</span></div></a>
+      <a class="card" data-name="HexGL" href="hexgl-main/index.html"><div class="title">HexGL</div><div class="meta"><span>Racing</span><span class="status ok">● local</span></div></a>
+      <a class="card" data-name="Rally Point 5" href="sdfdshf-main/rp5-main/index.html"><div class="title">Rally Point 5</div><div class="meta"><span>Racing</span><span class="status ok">● fixed route</span></div></a>
+      <a class="card" data-name="Rolling Sky" href="rolling sky/tmm-webgl-rollingsky/index.html"><div class="title">Rolling Sky</div><div class="meta"><span>Arcade</span><span class="status ok">● local</span></div></a>
+      <a class="card" data-name="Subway Surfers" href="subwaymaybe/subway-surfers/index.html"><div class="title">Subway Surfers</div><div class="meta"><span>Runner</span><span class="status ok">● fixed route</span></div></a>
+      <a class="card" data-name="Run 3" href="tn6pS9dCf37xAhkJv/index.html"><div class="title">Run 3</div><div class="meta"><span>Runner</span><span class="status ok">● local</span></div></a>
+      <a class="card" data-name="Slope" href="slope/index.html"><div class="title">Slope</div><div class="meta"><span>Arcade</span><span class="status ok">● local</span></div></a>
+      <a class="card" data-name="Superhot" href="superhot/index.html"><div class="title">Superhot</div><div class="meta"><span>FPS</span><span class="status ok">● local</span></div></a>
+      <a class="card" data-name="Temple Run 2" href="tpp2-main/index.html"><div class="title">Temple Run 2</div><div class="meta"><span>Runner</span><span class="status ok">● local</span></div></a>
+      <a class="card" data-name="Vex 3" href="vex3/index.html"><div class="title">Vex 3</div><div class="meta"><span>Platform</span><span class="status ok">● local</span></div></a>
+      <a class="card" data-name="Vex 4" href="vex4/index.html"><div class="title">Vex 4</div><div class="meta"><span>Platform</span><span class="status ok">● local</span></div></a>
+      <a class="card" data-name="Vex 5" href="vex5/index.html"><div class="title">Vex 5</div><div class="meta"><span>Platform</span><span class="status ok">● local</span></div></a>
+      <a class="card" data-name="Vex 6" href="vex6/index.html"><div class="title">Vex 6</div><div class="meta"><span>Platform</span><span class="status ok">● local</span></div></a>
+      <a class="card" data-name="Moto X3M" href="motox3m-main/index.html"><div class="title">Moto X3M</div><div class="meta"><span>Racing</span><span class="status ok">● local</span></div></a>
+      <a class="card" data-name="Duck Life 1" href="ducklife1/index.html"><div class="title">Duck Life 1</div><div class="meta"><span>Sim</span><span class="status ok">● local</span></div></a>
+      <a class="card" data-name="Duck Life 2" href="ducklife2/index.html"><div class="title">Duck Life 2</div><div class="meta"><span>Sim</span><span class="status ok">● local</span></div></a>
+      <a class="card" data-name="Duck Life 3" href="ducklife3/index.html"><div class="title">Duck Life 3</div><div class="meta"><span>Sim</span><span class="status ok">● local</span></div></a>
+      <a class="card" data-name="Duck Life 4" href="ducklife4/index.html"><div class="title">Duck Life 4</div><div class="meta"><span>Sim</span><span class="status ok">● local</span></div></a>
+    </section>
+  </main>
+
+  <script>
+    const searchInput = document.getElementById('search');
+    const cards = Array.from(document.querySelectorAll('.card'));
+    const visibleCount = document.getElementById('visibleCount');
+
+    function applyFilter() {
+      const q = searchInput.value.trim().toLowerCase();
+      let shown = 0;
+      cards.forEach((card) => {
+        const name = card.dataset.name.toLowerCase();
+        const isVisible = !q || name.includes(q);
+        card.classList.toggle('hidden', !isVisible);
+        if (isVisible) shown += 1;
+      });
+      visibleCount.textContent = shown;
+    }
+
+    searchInput.addEventListener('input', applyFilter);
+    applyFilter();
+  </script>
 </body>
 </html>
