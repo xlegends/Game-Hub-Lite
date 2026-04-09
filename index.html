@@ -18,44 +18,64 @@
       --radius: 14px;
     }
 
+    body[data-theme="light"] {
+      --bg: #f3f4f6;
+      --surface: #ffffff;
+      --surface-2: #f8fafc;
+      --text: #111827;
+      --muted: #6b7280;
+      --accent: #2563eb;
+      --border: #d1d5db;
+    }
+
     * { box-sizing: border-box; }
 
     body {
       margin: 0;
       min-height: 100vh;
-      background: radial-gradient(1200px 700px at 10% -20%, #1f3270, var(--bg));
+      background: var(--bg);
       color: var(--text);
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      padding: 32px 20px 56px;
+      padding: 24px 18px 48px;
+      transition: background .2s ease, color .2s ease;
     }
 
-    .shell {
-      max-width: 1200px;
-      margin: 0 auto;
+    .shell { max-width: 1200px; margin: 0 auto; }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
     }
 
     h1 {
-      margin: 0 0 8px;
-      font-size: clamp(1.8rem, 2.6vw, 2.6rem);
-      letter-spacing: .02em;
+      margin: 0;
+      font-size: clamp(1.7rem, 2.5vw, 2.3rem);
+      letter-spacing: .01em;
     }
 
-    .subtitle {
-      margin: 0 0 24px;
-      color: var(--muted);
-      line-height: 1.45;
+    .theme-toggle {
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-size: .86rem;
+      cursor: pointer;
     }
 
     .toolbar {
       display: grid;
       grid-template-columns: 1fr auto;
       gap: 12px;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
 
     .search {
       width: 100%;
-      border: 1px solid transparent;
+      border: 1px solid var(--border);
       background: var(--surface);
       color: var(--text);
       border-radius: 12px;
@@ -71,6 +91,7 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
+      border: 1px solid var(--border);
       background: var(--surface);
       color: var(--muted);
       border-radius: 999px;
@@ -81,14 +102,14 @@
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 14px;
+      gap: 12px;
     }
 
     .card {
       text-decoration: none;
       color: var(--text);
       background: var(--surface);
-      border: 1px solid transparent;
+      border: 1px solid var(--border);
       border-radius: var(--radius);
       padding: 14px;
       box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
@@ -106,38 +127,18 @@
       box-shadow: 0 16px 26px rgba(0, 0, 0, 0.24);
     }
 
-    .title {
-      font-weight: 700;
-      line-height: 1.2;
-    }
+    .title { font-weight: 700; line-height: 1.2; }
 
     .meta {
       margin-top: auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 8px;
       color: var(--muted);
       font-size: 0.78rem;
     }
 
-    .status {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      font-size: .72rem;
-      border-radius: 999px;
-      padding: 3px 8px;
-      background: rgba(255, 255, 255, 0.08);
-    }
-
-    .status.ok { color: var(--ok); }
-    .status.warn { color: var(--warn); }
-
     .hidden { display: none; }
   </style>
 </head>
-<body>
+<body data-theme="dark">
   <main class="shell">
     <h1>School</h1>
     
@@ -147,45 +148,54 @@
     </div>
 
     <section class="grid" id="games">
-      <a class="card" data-name="2048" href="2048/index.html"><div class="title">2048</div><div class="meta"><span>Puzzle</span><span class="status ok">● local</span></div></a>
-      <a class="card" data-name="Defcon Buildbuild" href="Buildbuild/index.html"><div class="title">DEFCON</div><div class="meta"><span>Strategy</span><span class="status ok">● local</span></div></a>
-      <a class="card" data-name="Cut The Rope Holiday" href="CTR-Holiday-main/index.html"><div class="title">Cut The Rope - Holiday</div><div class="meta"><span>Puzzle</span><span class="status ok">● local</span></div></a>
-      <a class="card" data-name="Fireboy Watergirl 1" href="FBWG1-main/index.html"><div class="title">Fireboy &amp; Watergirl 1</div><div class="meta"><span>Co-op</span><span class="status ok">● local</span></div></a>
-      <a class="card" data-name="Fireboy Watergirl 2" href="FBWG2-main/index.html"><div class="title">Fireboy &amp; Watergirl 2</div><div class="meta"><span>Co-op</span><span class="status ok">● local</span></div></a>
-      <a class="card" data-name="FNAF 2" href="fnaf2plswork-main/index.html"><div class="title">FNAF 2</div><div class="meta"><span>Horror</span><span class="status ok">● local</span></div></a>
-      <a class="card" data-name="FNAF 3" href="fnaf3-main/index.html"><div class="title">FNAF 3</div><div class="meta"><span>Horror</span><span class="status ok">● local</span></div></a>
-      <a class="card" data-name="Fluid Simulation" href="WebGL-Fluid-Simulation/index.html"><div class="title">Fluid Simulation</div><div class="meta"><span>Sandbox</span><span class="status ok">● local</span></div></a>
-      <a class="card" data-name="Basketball Stars" href="basketball-stars-main/index.html"><div class="title">Basketball Stars</div><div class="meta"><span>Sports</span><span class="status ok">● local</span></div></a>
-      <a class="card" data-name="Bitlife" href="bitlife/index.html"><div class="title">BitLife</div><div class="meta"><span>Sim</span><span class="status ok">● local</span></div></a>
-      <a class="card" data-name="Chrome Dino" href="chromedino/index.html"><div class="title">Offline Dino</div><div class="meta"><span>Arcade</span><span class="status ok">● local</span></div></a>
-      <a class="card" data-name="Cookie Clicker" href="cookieclicker-gh-pages/index.html"><div class="title">Cookie Clicker</div><div class="meta"><span>Idle</span><span class="status ok">● local</span></div></a>
-      <a class="card" data-name="Deal or No Deal" href="dealornodeal-main/index.html"><div class="title">Deal Or No Deal</div><div class="meta"><span>Trivia</span><span class="status ok">● local</span></div></a>
-      <a class="card" data-name="Defend The Tank" href="defendthetank-main/index.html"><div class="title">Defend The Tank</div><div class="meta"><span>Defense</span><span class="status ok">● local</span></div></a>
-      <a class="card" data-name="Getaway Shootout" href="getawayshootout-main/index.html"><div class="title">Getaway Shootout</div><div class="meta"><span>Action</span><span class="status ok">● local</span></div></a>
-      <a class="card" data-name="HexGL" href="hexgl-main/index.html"><div class="title">HexGL</div><div class="meta"><span>Racing</span><span class="status ok">● local</span></div></a>
-      <a class="card" data-name="Rally Point 5" href="sdfdshf-main/rp5-main/index.html"><div class="title">Rally Point 5</div><div class="meta"><span>Racing</span><span class="status ok">● fixed route</span></div></a>
-      <a class="card" data-name="Rolling Sky" href="rolling sky/tmm-webgl-rollingsky/index.html"><div class="title">Rolling Sky</div><div class="meta"><span>Arcade</span><span class="status ok">● local</span></div></a>
-      <a class="card" data-name="Subway Surfers" href="subwaymaybe/subway-surfers/index.html"><div class="title">Subway Surfers</div><div class="meta"><span>Runner</span><span class="status ok">● fixed route</span></div></a>
-      <a class="card" data-name="Run 3" href="tn6pS9dCf37xAhkJv/index.html"><div class="title">Run 3</div><div class="meta"><span>Runner</span><span class="status ok">● local</span></div></a>
-      <a class="card" data-name="Slope" href="slope/index.html"><div class="title">Slope</div><div class="meta"><span>Arcade</span><span class="status ok">● local</span></div></a>
-      <a class="card" data-name="Superhot" href="superhot/index.html"><div class="title">Superhot</div><div class="meta"><span>FPS</span><span class="status ok">● local</span></div></a>
-      <a class="card" data-name="Temple Run 2" href="tpp2-main/index.html"><div class="title">Temple Run 2</div><div class="meta"><span>Runner</span><span class="status ok">● local</span></div></a>
-      <a class="card" data-name="Vex 3" href="vex3/index.html"><div class="title">Vex 3</div><div class="meta"><span>Platform</span><span class="status ok">● local</span></div></a>
-      <a class="card" data-name="Vex 4" href="vex4/index.html"><div class="title">Vex 4</div><div class="meta"><span>Platform</span><span class="status ok">● local</span></div></a>
-      <a class="card" data-name="Vex 5" href="vex5/index.html"><div class="title">Vex 5</div><div class="meta"><span>Platform</span><span class="status ok">● local</span></div></a>
-      <a class="card" data-name="Vex 6" href="vex6/index.html"><div class="title">Vex 6</div><div class="meta"><span>Platform</span><span class="status ok">● local</span></div></a>
-      <a class="card" data-name="Moto X3M" href="motox3m-main/index.html"><div class="title">Moto X3M</div><div class="meta"><span>Racing</span><span class="status ok">● local</span></div></a>
-      <a class="card" data-name="Duck Life 1" href="ducklife1/index.html"><div class="title">Duck Life 1</div><div class="meta"><span>Sim</span><span class="status ok">● local</span></div></a>
-      <a class="card" data-name="Duck Life 2" href="ducklife2/index.html"><div class="title">Duck Life 2</div><div class="meta"><span>Sim</span><span class="status ok">● local</span></div></a>
-      <a class="card" data-name="Duck Life 3" href="ducklife3/index.html"><div class="title">Duck Life 3</div><div class="meta"><span>Sim</span><span class="status ok">● local</span></div></a>
-      <a class="card" data-name="Duck Life 4" href="ducklife4/index.html"><div class="title">Duck Life 4</div><div class="meta"><span>Sim</span><span class="status ok">● local</span></div></a>
+      <a class="card" data-name="2048" href="2048/index.html"><div class="title">2048</div><div class="meta"><span>Puzzle</span></div></a>
+      <a class="card" data-name="Defcon Buildbuild" href="Buildbuild/index.html"><div class="title">DEFCON</div><div class="meta"><span>Strategy</span></div></a>
+      <a class="card" data-name="Cut The Rope Holiday" href="CTR-Holiday-main/index.html"><div class="title">Cut The Rope - Holiday</div><div class="meta"><span>Puzzle</span></div></a>
+      <a class="card" data-name="Fireboy Watergirl 1" href="FBWG1-main/index.html"><div class="title">Fireboy &amp; Watergirl 1</div><div class="meta"><span>Co-op</span></div></a>
+      <a class="card" data-name="Fireboy Watergirl 2" href="FBWG2-main/index.html"><div class="title">Fireboy &amp; Watergirl 2</div><div class="meta"><span>Co-op</span></div></a>
+      <a class="card" data-name="FNAF 2" href="fnaf2plswork-main/index.html"><div class="title">FNAF 2</div><div class="meta"><span>Horror</span></div></a>
+      <a class="card" data-name="FNAF 3" href="fnaf3-main/index.html"><div class="title">FNAF 3</div><div class="meta"><span>Horror</span></div></a>
+      <a class="card" data-name="Fluid Simulation" href="WebGL-Fluid-Simulation/index.html"><div class="title">Fluid Simulation</div><div class="meta"><span>Sandbox</span></div></a>
+      <a class="card" data-name="Basketball Stars" href="basketball-stars-main/index.html"><div class="title">Basketball Stars</div><div class="meta"><span>Sports</span></div></a>
+      <a class="card" data-name="Bitlife" href="bitlife/index.html"><div class="title">BitLife</div><div class="meta"><span>Sim</span></div></a>
+      <a class="card" data-name="Chrome Dino" href="chromedino/index.html"><div class="title">Offline Dino</div><div class="meta"><span>Arcade</span></div></a>
+      <a class="card" data-name="Cookie Clicker" href="cookieclicker-gh-pages/index.html"><div class="title">Cookie Clicker</div><div class="meta"><span>Idle</span></div></a>
+      <a class="card" data-name="Deal or No Deal" href="dealornodeal-main/index.html"><div class="title">Deal Or No Deal</div><div class="meta"><span>Trivia</span></div></a>
+      <a class="card" data-name="Defend The Tank" href="defendthetank-main/index.html"><div class="title">Defend The Tank</div><div class="meta"><span>Defense</span></div></a>
+      <a class="card" data-name="Getaway Shootout" href="getawayshootout-main/index.html"><div class="title">Getaway Shootout</div><div class="meta"><span>Action</span></div></a>
+      <a class="card" data-name="HexGL" href="hexgl-main/index.html"><div class="title">HexGL</div><div class="meta"><span>Racing</span></div></a>
+      <a class="card" data-name="Rally Point 5" href="sdfdshf-main/rp5-main/index.html"><div class="title">Rally Point 5</div><div class="meta"><span>Racing</span></div></a>
+      <a class="card" data-name="Rolling Sky" href="rolling sky/tmm-webgl-rollingsky/index.html"><div class="title">Rolling Sky</div><div class="meta"><span>Arcade</span></div></a>
+      <a class="card" data-name="Subway Surfers" href="subwaymaybe/subway-surfers/index.html"><div class="title">Subway Surfers</div><div class="meta"><span>Runner</span></div></a>
+      <a class="card" data-name="Run 3" href="tn6pS9dCf37xAhkJv/index.html"><div class="title">Run 3</div><div class="meta"><span>Runner</span></div></a>
+      <a class="card" data-name="Slope" href="slope/index.html"><div class="title">Slope</div><div class="meta"><span>Arcade</span></div></a>
+      <a class="card" data-name="Superhot" href="superhot/index.html"><div class="title">Superhot</div><div class="meta"><span>FPS</span></div></a>
+      <a class="card" data-name="Temple Run 2" href="tpp2-main/index.html"><div class="title">Temple Run 2</div><div class="meta"><span>Runner</span></div></a>
+      <a class="card" data-name="Vex 3" href="vex3/index.html"><div class="title">Vex 3</div><div class="meta"><span>Platform</span></div></a>
+      <a class="card" data-name="Vex 4" href="vex4/index.html"><div class="title">Vex 4</div><div class="meta"><span>Platform</span></div></a>
+      <a class="card" data-name="Vex 5" href="vex5/index.html"><div class="title">Vex 5</div><div class="meta"><span>Platform</span></div></a>
+      <a class="card" data-name="Vex 6" href="vex6/index.html"><div class="title">Vex 6</div><div class="meta"><span>Platform</span></div></a>
+      <a class="card" data-name="Moto X3M" href="motox3m-main/index.html"><div class="title">Moto X3M</div><div class="meta"><span>Racing</span></div></a>
+      <a class="card" data-name="Duck Life 1" href="ducklife1/index.html"><div class="title">Duck Life 1</div><div class="meta"><span>Sim</span></div></a>
+      <a class="card" data-name="Duck Life 2" href="ducklife2/index.html"><div class="title">Duck Life 2</div><div class="meta"><span>Sim</span></div></a>
+      <a class="card" data-name="Duck Life 3" href="ducklife3/index.html"><div class="title">Duck Life 3</div><div class="meta"><span>Sim</span></div></a>
+      <a class="card" data-name="Duck Life 4" href="ducklife4/index.html"><div class="title">Duck Life 4</div><div class="meta"><span>Sim</span></div></a>
     </section>
   </main>
 
   <script>
+    const body = document.body;
     const searchInput = document.getElementById('search');
     const cards = Array.from(document.querySelectorAll('.card'));
     const visibleCount = document.getElementById('visibleCount');
+    const themeToggle = document.getElementById('themeToggle');
+
+    function setTheme(theme) {
+      body.dataset.theme = theme;
+      const isDark = theme === 'dark';
+      themeToggle.textContent = isDark ? 'Switch to Light' : 'Switch to Dark';
+      localStorage.setItem('school-theme', theme);
+    }
 
     function applyFilter() {
       const q = searchInput.value.trim().toLowerCase();
@@ -198,6 +208,13 @@
       });
       visibleCount.textContent = shown;
     }
+
+    const savedTheme = localStorage.getItem('school-theme');
+    setTheme(savedTheme === 'light' ? 'light' : 'dark');
+
+    themeToggle.addEventListener('click', () => {
+      setTheme(body.dataset.theme === 'dark' ? 'light' : 'dark');
+    });
 
     searchInput.addEventListener('input', applyFilter);
     applyFilter();
