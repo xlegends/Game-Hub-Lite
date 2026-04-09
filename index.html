@@ -6,13 +6,15 @@
   <title>School</title>
   <style>
     :root {
-      --bg: #000000;
-      --surface: #0f0f10;
-      --surface-2: #171719;
-      --text: #f5f5f5;
-      --muted: #a3a3a3;
-      --accent: #8ab4ff;
-      --border: #26262a;
+      --bg: #0b1020;
+      --bg-soft: #111936;
+      --surface: rgba(255, 255, 255, 0.06);
+      --surface-2: rgba(255, 255, 255, 0.11);
+      --text: #e8ecff;
+      --muted: #9eabd6;
+      --accent: #6ea8ff;
+      --ok: #4ade80;
+      --warn: #f59e0b;
       --radius: 14px;
     }
 
@@ -79,6 +81,7 @@
       border-radius: 12px;
       padding: 12px 14px;
       font-size: 0.95rem;
+      backdrop-filter: blur(6px);
       outline: none;
     }
 
@@ -109,17 +112,19 @@
       border: 1px solid var(--border);
       border-radius: var(--radius);
       padding: 14px;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
       display: flex;
       flex-direction: column;
       gap: 10px;
-      min-height: 96px;
-      transition: transform .14s ease, border-color .14s ease, background .14s ease;
+      min-height: 110px;
+      transition: transform .14s ease, border-color .14s ease, background .14s ease, box-shadow .14s ease;
     }
 
     .card:hover {
       transform: translateY(-2px);
       border-color: var(--accent);
       background: var(--surface-2);
+      box-shadow: 0 16px 26px rgba(0, 0, 0, 0.24);
     }
 
     .title { font-weight: 700; line-height: 1.2; }
@@ -135,11 +140,8 @@
 </head>
 <body data-theme="dark">
   <main class="shell">
-    <div class="header">
-      <h1>School</h1>
-      <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle color theme">Switch to Light</button>
-    </div>
-
+    <h1>School</h1>
+    
     <div class="toolbar">
       <input id="search" class="search" type="search" placeholder="Search games…" aria-label="Search games">
       <div class="pill"><span id="visibleCount">0</span><span>games shown</span></div>
